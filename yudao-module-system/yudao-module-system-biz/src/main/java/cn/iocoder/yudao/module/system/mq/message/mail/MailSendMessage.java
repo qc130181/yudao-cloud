@@ -1,9 +1,8 @@
 package cn.iocoder.yudao.module.system.mq.message.mail;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 /**
  * 邮箱发送消息

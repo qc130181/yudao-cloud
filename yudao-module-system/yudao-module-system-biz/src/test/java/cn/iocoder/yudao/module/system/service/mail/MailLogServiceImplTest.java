@@ -10,10 +10,10 @@ import cn.iocoder.yudao.module.system.dal.dataobject.mail.MailLogDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.mail.MailTemplateDO;
 import cn.iocoder.yudao.module.system.dal.mysql.mail.MailLogMapper;
 import cn.iocoder.yudao.module.system.enums.mail.MailSendStatusEnum;
+import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
 
-import javax.annotation.Resource;
 import java.util.Map;
 
 import static cn.hutool.core.util.RandomUtil.randomEle;

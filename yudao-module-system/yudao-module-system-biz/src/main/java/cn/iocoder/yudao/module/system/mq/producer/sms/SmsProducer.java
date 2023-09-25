@@ -3,11 +3,11 @@ package cn.iocoder.yudao.module.system.mq.producer.sms;
 import cn.iocoder.yudao.framework.common.core.KeyValue;
 import cn.iocoder.yudao.framework.mq.core.bus.AbstractBusProducer;
 import cn.iocoder.yudao.module.system.mq.message.sms.SmsSendMessage;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**

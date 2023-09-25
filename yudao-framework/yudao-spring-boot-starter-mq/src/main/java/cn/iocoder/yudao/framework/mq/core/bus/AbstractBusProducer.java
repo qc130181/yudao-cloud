@@ -1,11 +1,10 @@
 package cn.iocoder.yudao.framework.mq.core.bus;
 
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.bus.ServiceMatcher;
 import org.springframework.cloud.bus.event.RemoteApplicationEvent;
 import org.springframework.context.ApplicationEventPublisher;
-
-import javax.annotation.Resource;
 
 /**
  * 基于 Spring Cloud Bus 实现的 Producer 抽象类

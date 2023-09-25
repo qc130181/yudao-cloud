@@ -2,10 +2,10 @@ package cn.iocoder.yudao.module.system.mq.consumer.sms;
 
 import cn.iocoder.yudao.module.system.mq.message.sms.SmsSendMessage;
 import cn.iocoder.yudao.module.system.service.sms.SmsSendService;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.function.Consumer;
 
 /**

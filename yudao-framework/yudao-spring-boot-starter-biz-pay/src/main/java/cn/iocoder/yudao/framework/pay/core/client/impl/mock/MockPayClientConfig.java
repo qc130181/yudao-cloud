@@ -1,9 +1,8 @@
 package cn.iocoder.yudao.framework.pay.core.client.impl.mock;
 
 import cn.iocoder.yudao.framework.pay.core.client.PayClientConfig;
+import jakarta.validation.Validator;
 import lombok.Data;
-
-import javax.validation.Validator;
 
 /**
  * 模拟支付的 PayClientConfig 实现类

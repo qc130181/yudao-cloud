@@ -4,10 +4,9 @@ import cn.iocoder.yudao.framework.common.pojo.CommonResult;
 import cn.iocoder.yudao.module.system.api.notify.NotifyMessageSendApi;
 import cn.iocoder.yudao.module.system.api.notify.dto.NotifySendSingleToUserReqDTO;
 import cn.iocoder.yudao.module.system.service.notify.NotifySendService;
+import jakarta.annotation.Resource;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
 
 import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 

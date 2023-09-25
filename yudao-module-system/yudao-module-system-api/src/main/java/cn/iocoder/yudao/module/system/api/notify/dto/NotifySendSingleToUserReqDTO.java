@@ -1,11 +1,10 @@
 package cn.iocoder.yudao.module.system.api.notify.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.Map;
 
 @Schema(description = "RPC 服务 - 站内信发送给 Admin 或者 Member 用户 Request DTO")
