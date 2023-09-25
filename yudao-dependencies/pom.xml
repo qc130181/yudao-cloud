@@ -14,15 +14,15 @@
     <url>https://github.com/YunaiV/ruoyi-vue-pro</url>
 
     <properties>
-        <revision>1.8.3-snapshot</revision>
+        <revision>1.8.2-snapshot</revision>
         <flatten-maven-plugin.version>1.5.0</flatten-maven-plugin.version>
         <!-- 统一依赖管理 -->
-        <spring.boot.version>2.7.17</spring.boot.version>
-        <spring.cloud.version>2021.0.5</spring.cloud.version>
-        <spring.cloud.alibaba.version>2021.0.4.0</spring.cloud.alibaba.version>
+        <spring.boot.version>3.1.4</spring.boot.version>
+        <spring.cloud.version>2022.0.4</spring.cloud.version>
+        <spring.cloud.alibaba.version>2022.0.0.0</spring.cloud.alibaba.version>
         <!-- Web 相关 -->
         <servlet.versoin>2.5</servlet.versoin>
-        <springdoc.version>1.6.15</springdoc.version>
+        <springdoc.version>2.2.0</springdoc.version>
         <knife4j.version>4.3.0</knife4j.version>
         <!-- DB 相关 -->
         <druid.version>1.2.19</druid.version>
@@ -30,10 +30,8 @@
         <mybatis-plus-generator.version>3.5.3.2</mybatis-plus-generator.version>
         <dynamic-datasource.version>3.6.1</dynamic-datasource.version>
         <mybatis-plus-join-boot-starter.version>1.4.6</mybatis-plus-join-boot-starter.version>
-        <redisson.version>3.18.0</redisson.version>
+        <redisson.version>3.23.4</redisson.version>
         <dm8.jdbc.version>8.1.2.141</dm8.jdbc.version>
-        <!-- 消息队列 -->
-        <rocketmq-spring.version>2.2.3</rocketmq-spring.version>
         <!-- RPC 相关 -->
         <!-- Config 配置中心相关 -->
         <apollo.version>1.9.2</apollo.version>
@@ -41,19 +39,19 @@
         <xxl-job.version>2.3.1</xxl-job.version>
         <!-- 服务保障相关 -->
         <lock4j.version>2.2.3</lock4j.version>
-        <resilience4j.version>1.7.1</resilience4j.version>
+        <resilience4j.version>2.1.0</resilience4j.version>
         <!-- 监控相关 -->
-        <skywalking.version>8.12.0</skywalking.version>
-        <spring-boot-admin.version>2.7.10</spring-boot-admin.version>
+        <skywalking.version>9.0.0</skywalking.version>
+        <spring-boot-admin.version>3.1.6</spring-boot-admin.version>
         <opentracing.version>0.33.0</opentracing.version>
         <!-- Test 测试相关 -->
-        <podam.version>7.2.11.RELEASE</podam.version>
-        <jedis-mock.version>1.0.7</jedis-mock.version>
-        <mockito-inline.version>4.11.0</mockito-inline.version>
+        <podam.version>8.0.0.RELEASE</podam.version>
+        <jedis-mock.version>1.0.10</jedis-mock.version>
+        <mockito-inline.version>5.2.0</mockito-inline.version>
         <!-- Bpm 工作流相关 -->
-        <flowable.version>6.8.0</flowable.version>
+        <flowable.version>7.0.0</flowable.version>
         <!-- 工具类相关 -->
-        <captcha-plus.version>1.0.8</captcha-plus.version>
+        <captcha-plus.version>2.0.3</captcha-plus.version>
         <jsoup.version>1.16.1</jsoup.version>
         <lombok.version>1.18.30</lombok.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
@@ -67,21 +65,21 @@
         <transmittable-thread-local.version>2.14.2</transmittable-thread-local.version>
         <commons-net.version>3.9.0</commons-net.version>
         <jsch.version>0.1.55</jsch.version>
-        <tika-core.version>2.7.0</tika-core.version>
+        <tika-core.version>2.9.0</tika-core.version>
         <ip2region.version>2.7.0</ip2region.version>
         <reflections.version>0.10.2</reflections.version>
         <!-- 三方云服务相关 -->
         <okio.version>3.5.0</okio.version>
         <okhttp3.version>4.11.0</okhttp3.version>
-        <commons-io.version>2.11.0</commons-io.version>
+        <commons-io.version>2.13.0</commons-io.version>
         <minio.version>8.5.6</minio.version>
         <aliyun-java-sdk-core.version>4.6.4</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-dysmsapi.version>2.2.1</aliyun-java-sdk-dysmsapi.version>
         <tencentcloud-sdk-java.version>3.1.853</tencentcloud-sdk-java.version>
-        <justauth.version>1.0.8</justauth.version>
-        <jimureport.version>1.6.1</jimureport.version>
+        <justauth.version>2.0.3</justauth.version>
+        <jimureport.version>1.5.8</jimureport.version>
         <xercesImpl.version>2.12.2</xercesImpl.version>
-        <weixin-java.version>4.5.7.B</weixin-java.version>
+        <weixin-java.version>4.5.5.B</weixin-java.version>
     </properties>
 
     <dependencyManagement>
@@ -137,12 +135,22 @@
             </dependency>
             <dependency>
                 <groupId>cn.iocoder.cloud</groupId>
+                <artifactId>yudao-spring-boot-starter-biz-weixin</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.iocoder.cloud</groupId>
                 <artifactId>yudao-spring-boot-starter-biz-tenant</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>cn.iocoder.cloud</groupId>
                 <artifactId>yudao-spring-boot-starter-biz-data-permission</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.iocoder.cloud</groupId>
+                <artifactId>yudao-spring-boot-starter-biz-social</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
@@ -194,20 +202,14 @@
             </dependency>
 
             <dependency>
-                <groupId>cn.iocoder.cloud</groupId>
-                <artifactId>yudao-spring-boot-starter-websocket</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springdoc</groupId> <!-- 接口文档 UI：默认 -->
-                <artifactId>springdoc-openapi-ui</artifactId>
-                <version>${springdoc.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.xiaoymin</groupId> <!-- 接口文档 UI：knife4j -->
-                <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+                <version>${springdoc.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.xiaoymin</groupId> <!-- 接口文档 UI：knife4j【网关专属】 -->
@@ -221,15 +223,10 @@
                 <artifactId>yudao-spring-boot-starter-mybatis</artifactId>
                 <version>${revision}</version>
             </dependency>
-            <dependency>
-                <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-webflux-ui</artifactId>
-                <version>${springdoc.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
+                <artifactId>druid-spring-boot-3-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
             <dependency>
@@ -301,12 +298,6 @@
                 <version>${revision}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.apache.rocketmq</groupId>
-                <artifactId>rocketmq-spring-boot-starter</artifactId>
-                <version>${rocketmq-spring.version}</version>
-            </dependency>
-
             <!-- 服务保障相关 -->
             <dependency>
                 <groupId>cn.iocoder.cloud</groupId>
@@ -333,7 +324,7 @@
             </dependency>
             <dependency>
                 <groupId>io.github.resilience4j</groupId>
-                <artifactId>resilience4j-spring-boot2</artifactId>
+                <artifactId>resilience4j-spring-boot3</artifactId>
                 <version>${resilience4j.version}</version>
             </dependency>
 
@@ -625,12 +616,12 @@
             </dependency>
             <dependency>
                 <groupId>com.github.binarywang</groupId>
-                <artifactId>wx-java-mp-spring-boot-starter</artifactId>
+                <artifactId>weixin-java-mp</artifactId>
                 <version>${weixin-java.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.binarywang</groupId>
-                <artifactId>wx-java-miniapp-spring-boot-starter</artifactId>
+                <artifactId>wx-java-mp-spring-boot-starter</artifactId>
                 <version>${weixin-java.version}</version>
             </dependency>
 
