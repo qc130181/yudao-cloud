@@ -1,9 +1,8 @@
 package cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.form;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-
-import javax.validation.constraints.NotNull;
 
 /**
 * 动态表单 Base VO，提供给添加、修改、详细的子 VO 使用

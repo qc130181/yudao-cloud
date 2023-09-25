@@ -7,9 +7,9 @@ import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
 import cn.iocoder.yudao.gateway.util.SecurityFrameworkUtils;
 import cn.iocoder.yudao.gateway.util.WebFrameworkUtils;
 import com.alibaba.nacos.common.utils.StringUtils;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.reactivestreams.Publisher;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.gateway.filter.factory.rewrite.CachedBodyOutputMessage;
@@ -22,6 +22,7 @@ import org.springframework.core.io.buffer.DataBufferFactory;
 import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.core.io.buffer.DefaultDataBufferFactory;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ReactiveHttpOutputMessage;
 import org.springframework.http.codec.CodecConfigurer;
@@ -37,7 +38,6 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -188,7 +188,7 @@ public class AccessLogFilter implements GlobalFilter, Ordered {
                     gatewayLog.setUserId(SecurityFrameworkUtils.getLoginUserId(exchange));
                     gatewayLog.setUserType(SecurityFrameworkUtils.getLoginUserType(exchange));
                     gatewayLog.setResponseHeaders(response.getHeaders());
-                    gatewayLog.setHttpStatus(response.getStatusCode());
+                    gatewayLog.setHttpStatus((HttpStatus) response.getStatusCode());
 
                     // 获取响应类型，如果是 json 就打印
                     String originalResponseContentType = exchange.getAttribute(ServerWebExchangeUtils.ORIGINAL_RESPONSE_CONTENT_TYPE_ATTR);
@@ -217,8 +217,8 @@ public class AccessLogFilter implements GlobalFilter, Ordered {
     /**
      * 请求装饰器，支持重新计算 headers、body 缓存
      *
-     * @param exchange 请求
-     * @param headers 请求头
+     * @param exchange      请求
+     * @param headers       请求头
      * @param outputMessage body 缓存
      * @return 请求装饰器
      */

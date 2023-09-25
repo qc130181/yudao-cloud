@@ -2,11 +2,11 @@ package cn.iocoder.yudao.framework.env.core.util;
 
 import cn.iocoder.yudao.framework.env.config.EnvProperties;
 import feign.RequestTemplate;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.SneakyThrows;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.core.env.Environment;
 
-import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
 import java.util.Objects;
 

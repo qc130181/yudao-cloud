@@ -3,10 +3,10 @@ package cn.iocoder.yudao.module.pay.job.order;
 import cn.iocoder.yudao.framework.tenant.core.job.TenantJob;
 import cn.iocoder.yudao.module.pay.service.order.PayOrderService;
 import com.xxl.job.core.handler.annotation.XxlJob;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.time.Duration;
 import java.time.LocalDateTime;
 

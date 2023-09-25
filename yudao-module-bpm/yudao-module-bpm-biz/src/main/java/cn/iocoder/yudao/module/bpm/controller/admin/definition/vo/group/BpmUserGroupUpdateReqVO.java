@@ -1,11 +1,10 @@
 package cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.group;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-
-import javax.validation.constraints.NotNull;
 
 @Schema(description = "管理后台 - 用户组更新 Request VO")
 @Data
