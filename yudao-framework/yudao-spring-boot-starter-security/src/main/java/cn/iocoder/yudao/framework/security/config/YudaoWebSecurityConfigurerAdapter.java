@@ -4,6 +4,8 @@ import cn.iocoder.yudao.framework.security.core.filter.TokenAuthenticationFilter
 import cn.iocoder.yudao.framework.web.config.WebProperties;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import jakarta.annotation.Resource;
+import jakarta.annotation.security.PermitAll;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -21,8 +23,6 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
-import javax.annotation.Resource;
-import javax.annotation.security.PermitAll;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -115,23 +115,23 @@ public class YudaoWebSecurityConfigurerAdapter {
         // 设置每个请求的权限
         httpSecurity
                 // ①：全局共享规则
-                .authorizeRequests()
+                .authorizeHttpRequests()
                 // 1.1 静态资源，可匿名访问
-                .antMatchers(HttpMethod.GET, "/*.html", "/**/*.html", "/**/*.css", "/**/*.js").permitAll()
+                .requestMatchers(HttpMethod.GET, "/*.html", "/**/*.html", "/**/*.css", "/**/*.js").permitAll()
                 // 1.2 设置 @PermitAll 无需认证
-                .antMatchers(HttpMethod.GET, permitAllUrls.get(HttpMethod.GET).toArray(new String[0])).permitAll()
-                .antMatchers(HttpMethod.POST, permitAllUrls.get(HttpMethod.POST).toArray(new String[0])).permitAll()
-                .antMatchers(HttpMethod.PUT, permitAllUrls.get(HttpMethod.PUT).toArray(new String[0])).permitAll()
-                .antMatchers(HttpMethod.DELETE, permitAllUrls.get(HttpMethod.DELETE).toArray(new String[0])).permitAll()
+                .requestMatchers(HttpMethod.GET, permitAllUrls.get(HttpMethod.GET).toArray(new String[0])).permitAll()
+                .requestMatchers(HttpMethod.POST, permitAllUrls.get(HttpMethod.POST).toArray(new String[0])).permitAll()
+                .requestMatchers(HttpMethod.PUT, permitAllUrls.get(HttpMethod.PUT).toArray(new String[0])).permitAll()
+                .requestMatchers(HttpMethod.DELETE, permitAllUrls.get(HttpMethod.DELETE).toArray(new String[0])).permitAll()
                 // 1.3 基于 yudao.security.permit-all-urls 无需认证
-                .antMatchers(securityProperties.getPermitAllUrls().toArray(new String[0])).permitAll()
+                .requestMatchers(securityProperties.getPermitAllUrls().toArray(new String[0])).permitAll()
                 // 1.4 设置 App API 无需认证
-                .antMatchers(buildAppApi("/**")).permitAll()
+                .requestMatchers(buildAppApi("/**")).permitAll()
                 // ②：每个项目的自定义规则
-                .and().authorizeRequests(registry -> // 下面，循环设置自定义规则
+                .and().authorizeHttpRequests(registry -> // 下面，循环设置自定义规则
                         authorizeRequestsCustomizers.forEach(customizer -> customizer.customize(registry)))
                 // ③：兜底规则，必须认证
-                .authorizeRequests()
+                .authorizeHttpRequests()
                 .anyRequest().authenticated()
         ;
 
