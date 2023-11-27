@@ -8,10 +8,11 @@ import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptListReqV
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptUpdateReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.DeptDO;
 import cn.iocoder.yudao.module.system.dal.mysql.dept.DeptMapper;
+import cn.iocoder.yudao.module.system.enums.dept.DeptIdEnum;
+import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
 
-import jakarta.annotation.Resource;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -40,7 +41,7 @@ public class DeptServiceImplTest extends BaseDbUnitTest {
     public void testCreateDept() {
         // 准备参数
         DeptCreateReqVO reqVO = randomPojo(DeptCreateReqVO.class, o -> {
-            o.setParentId(DeptDO.PARENT_ID_ROOT);
+            o.setParentId(DeptIdEnum.ROOT.getId());
             o.setStatus(randomCommonStatus());
         });
 
@@ -61,7 +62,7 @@ public class DeptServiceImplTest extends BaseDbUnitTest {
         // 准备参数
         DeptUpdateReqVO reqVO = randomPojo(DeptUpdateReqVO.class, o -> {
             // 设置更新的 ID
-            o.setParentId(DeptDO.PARENT_ID_ROOT);
+            o.setParentId(DeptIdEnum.ROOT.getId());
             o.setId(dbDeptDO.getId());
             o.setStatus(randomCommonStatus());
         });

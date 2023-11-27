@@ -1,19 +1,18 @@
-package cn.iocoder.yudao.module.member.controller.admin.tag.vo;
+package cn.iocoder.yudao.module.infra.controller.admin.test.vo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import jakarta.validation.constraints.NotNull;
-
-@Schema(description = "管理后台 - 会员标签更新 Request VO")
+@Schema(description = "管理后台 - 字典类型更新 Request VO")
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class MemberTagUpdateReqVO extends MemberTagBaseVO {
+public class TestDemoUpdateReqVO extends TestDemoBaseVO {
 
-    @Schema(description = "编号", requiredMode = Schema.RequiredMode.REQUIRED, example = "907")
+    @Schema(description = "编号", requiredMode = Schema.RequiredMode.REQUIRED)
     @NotNull(message = "编号不能为空")
     private Long id;
 

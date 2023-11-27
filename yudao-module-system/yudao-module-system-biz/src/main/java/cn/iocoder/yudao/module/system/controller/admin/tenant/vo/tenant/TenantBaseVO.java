@@ -1,9 +1,9 @@
 package cn.iocoder.yudao.module.system.controller.admin.tenant.vo.tenant;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 /**
@@ -29,7 +29,7 @@ public class TenantBaseVO {
     private Integer status;
 
     @Schema(description = "绑定域名", example = "https://www.iocoder.cn")
-    private String website;
+    private String domain;
 
     @Schema(description = "租户套餐编号", requiredMode = Schema.RequiredMode.REQUIRED, example = "1024")
     @NotNull(message = "租户套餐编号不能为空")

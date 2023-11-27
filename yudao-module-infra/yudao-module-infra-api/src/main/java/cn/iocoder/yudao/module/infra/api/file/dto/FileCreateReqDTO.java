@@ -1,9 +1,8 @@
 package cn.iocoder.yudao.module.infra.api.file.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
-
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Data;
 
 @Schema(description = "RPC 服务 - 文件创建 Request DTO")
 @Data
@@ -15,7 +14,7 @@ public class FileCreateReqDTO {
     @Schema(description = "文件路径", example = "xxx.png")
     private String path;
 
-    @Schema(description = "文件内容", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(description = "文件内容", required = true)
     @NotEmpty(message = "文件内容不能为空")
     private byte[] content;
 

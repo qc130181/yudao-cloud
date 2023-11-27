@@ -1,12 +1,11 @@
 package cn.iocoder.yudao.module.pay.dal.redis.no;
 
-import cn.hutool.core.date.DatePattern;import cn.hutool.core.date.DateUtil;
-import cn.iocoder.yudao.module.pay.dal.redis.RedisKeyConstants;
+import cn.hutool.core.date.DatePattern;
+import cn.hutool.core.date.DateUtil;
+import jakarta.annotation.Resource;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Repository;
 
-import jakarta.annotation.Resource;
-import java.time.Duration;
 import java.time.LocalDateTime;
 
 /**
@@ -27,12 +26,8 @@ public class PayNoRedisDAO {
      * @return 序号
      */
     public String generate(String prefix) {
-        // 递增序号
         String noPrefix = prefix + DateUtil.format(LocalDateTime.now(), DatePattern.PURE_DATETIME_PATTERN);
-        String key = RedisKeyConstants.PAY_NO + noPrefix;
-        Long no = stringRedisTemplate.opsForValue().increment(key);
-        // 设置过期时间
-        stringRedisTemplate.expire(key, Duration.ofMinutes(1L));
+        Long no = stringRedisTemplate.opsForValue().increment(noPrefix);
         return noPrefix + no;
     }
 

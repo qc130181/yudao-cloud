@@ -1,5 +1,6 @@
 package cn.iocoder.yudao.module.system.service.sms;
 
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
 import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.sms.vo.log.SmsLogExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.sms.vo.log.SmsLogPageReqVO;
@@ -8,10 +9,10 @@ import cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsTemplateDO;
 import cn.iocoder.yudao.module.system.dal.mysql.sms.SmsLogMapper;
 import cn.iocoder.yudao.module.system.enums.sms.SmsReceiveStatusEnum;
 import cn.iocoder.yudao.module.system.enums.sms.SmsSendStatusEnum;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import jakarta.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -54,12 +55,13 @@ public class SmsLogServiceImpl implements SmsLogService {
     }
 
     @Override
-    public void updateSmsSendResult(Long id, Boolean success,
+    public void updateSmsSendResult(Long id, Integer sendCode, String sendMsg,
                                     String apiSendCode, String apiSendMsg,
                                     String apiRequestId, String apiSerialNo) {
-        SmsSendStatusEnum sendStatus = success ? SmsSendStatusEnum.SUCCESS : SmsSendStatusEnum.FAILURE;
-        smsLogMapper.updateById(SmsLogDO.builder().id(id)
-                .sendStatus(sendStatus.getStatus()).sendTime(LocalDateTime.now())
+        SmsSendStatusEnum sendStatus = CommonResult.isSuccess(sendCode) ?
+                SmsSendStatusEnum.SUCCESS : SmsSendStatusEnum.FAILURE;
+        smsLogMapper.updateById(SmsLogDO.builder().id(id).sendStatus(sendStatus.getStatus())
+                .sendTime(LocalDateTime.now()).sendCode(sendCode).sendMsg(sendMsg)
                 .apiSendCode(apiSendCode).apiSendMsg(apiSendMsg)
                 .apiRequestId(apiRequestId).apiSerialNo(apiSerialNo).build());
     }
