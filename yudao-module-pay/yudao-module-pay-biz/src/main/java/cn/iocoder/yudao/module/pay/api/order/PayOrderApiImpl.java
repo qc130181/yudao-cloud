@@ -1,5 +1,6 @@
 package cn.iocoder.yudao.module.pay.api.order;
 
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
 import cn.iocoder.yudao.module.pay.api.order.dto.PayOrderCreateReqDTO;
 import cn.iocoder.yudao.module.pay.api.order.dto.PayOrderRespDTO;
 import cn.iocoder.yudao.module.pay.convert.order.PayOrderConvert;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RestController;
 
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
+
 @Service
 @RestController // 提供 RESTful API 接口，给 Feign 调用
 @Validated
@@ -19,14 +22,20 @@ public class PayOrderApiImpl implements PayOrderApi {
     private PayOrderService payOrderService;
 
     @Override
-    public Long createOrder(PayOrderCreateReqDTO reqDTO) {
-        return payOrderService.createOrder(reqDTO);
+    public CommonResult<Long> createOrder(PayOrderCreateReqDTO reqDTO) {
+        return success(payOrderService.createOrder(reqDTO));
     }
 
     @Override
-    public PayOrderRespDTO getOrder(Long id) {
+    public CommonResult<PayOrderRespDTO> getOrder(Long id) {
         PayOrderDO order = payOrderService.getOrder(id);
-        return PayOrderConvert.INSTANCE.convert2(order);
+        return success(PayOrderConvert.INSTANCE.convert2(order));
+    }
+
+    @Override
+    public CommonResult<Boolean> updatePayOrderPrice(Long id, Integer payPrice) {
+        payOrderService.updatePayOrderPrice(id, payPrice);
+        return success(true);
     }
 
 }

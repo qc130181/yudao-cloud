@@ -2,6 +2,7 @@ package cn.iocoder.yudao.module.system.api.social;
 
 import cn.iocoder.yudao.framework.common.pojo.CommonResult;
 import cn.iocoder.yudao.module.system.api.social.dto.SocialUserBindReqDTO;
+import cn.iocoder.yudao.module.system.api.social.dto.SocialUserRespDTO;
 import cn.iocoder.yudao.module.system.api.social.dto.SocialUserUnbindReqDTO;
 import cn.iocoder.yudao.module.system.enums.ApiConstants;
 import io.swagger.v3.oas.annotations.Operation;
@@ -18,18 +19,9 @@ public interface SocialUserApi {
 
     String PREFIX = ApiConstants.PREFIX + "/social-user";
 
-    @GetMapping("PREFIX + /get-authorize-url")
-    @Operation(summary = "获得社交平台的授权 URL")
-    @Parameters({
-            @Parameter(name = "type", description = "社交平台的类型", example = "1", required = true),
-            @Parameter(name = "redirectUri", description = "重定向 URL", example = "https://www.iocoder.cn",required = true)
-    })
-    CommonResult<String> getAuthorizeUrl(@RequestParam("type") Integer type,
-                                         @RequestParam("redirectUri") String redirectUri);
-
     @PostMapping("PREFIX + /bind")
     @Operation(summary = "绑定社交用户")
-    CommonResult<Boolean> bindSocialUser(@Valid @RequestBody SocialUserBindReqDTO reqDTO);
+    CommonResult<String> bindSocialUser(@Valid @RequestBody SocialUserBindReqDTO reqDTO);
 
     @DeleteMapping("PREFIX + /unbind")
     @Operation(summary = "取消绑定社交用户")
@@ -43,9 +35,9 @@ public interface SocialUserApi {
             @Parameter(name = "code", description = "授权码", required = true, example = "tudou"),
             @Parameter(name = "state", description = "state", required = true, example = "coke")
     })
-    CommonResult<Long> getBindUserId(@RequestParam("userType") Integer userType,
-                                     @RequestParam("type") Integer type,
-                                     @RequestParam("code") String code,
-                                     @RequestParam("state") String state);
+    CommonResult<SocialUserRespDTO> getSocialUser(@RequestParam("userType") Integer userType,
+                                                  @RequestParam("type") Integer type,
+                                                  @RequestParam("code") String code,
+                                                  @RequestParam("state") String state);
 
 }

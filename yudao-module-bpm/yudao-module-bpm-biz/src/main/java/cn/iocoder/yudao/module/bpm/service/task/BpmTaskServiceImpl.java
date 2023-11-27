@@ -58,7 +58,6 @@ import java.util.stream.Stream;
 import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
 import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.*;
 import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.*;
-import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.TASK_TARGET_NODE_NOT_EXISTS;
 
 /**
  * 流程任务实例 Service 实现类

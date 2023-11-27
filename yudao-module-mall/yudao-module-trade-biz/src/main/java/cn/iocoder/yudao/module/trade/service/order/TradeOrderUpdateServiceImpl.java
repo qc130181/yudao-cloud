@@ -643,7 +643,7 @@ public class TradeOrderUpdateServiceImpl implements TradeOrderUpdateService {
         tradeOrderItemMapper.updateBatch(updateItems);
 
         // 4. 更新支付订单
-        payOrderApi.updatePayOrderPrice(order.getPayOrderId(), newPayPrice);
+        payOrderApi.updatePayOrderPrice(order.getPayOrderId(), newPayPrice).getCheckedData();
 
         // 5. 记录订单日志
         TradeOrderLogUtils.setOrderInfo(order.getId(), order.getStatus(), order.getStatus(),

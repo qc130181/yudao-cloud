@@ -8,9 +8,8 @@ import cn.iocoder.yudao.module.system.controller.admin.socail.vo.client.SocialCl
 import cn.iocoder.yudao.module.system.dal.dataobject.social.SocialClientDO;
 import cn.iocoder.yudao.module.system.enums.social.SocialTypeEnum;
 import com.xingyuv.jushauth.model.AuthUser;
-import me.chanjar.weixin.common.bean.WxJsapiSignature;
-
 import jakarta.validation.Valid;
+import me.chanjar.weixin.common.bean.WxJsapiSignature;
 
 /**
  * 社交应用 Service 接口
