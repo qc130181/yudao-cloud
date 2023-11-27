@@ -41,15 +41,16 @@ public class YudaoTracerAutoConfiguration {
 //        return tracer;
 //    }
 
-    /**
-     * 创建 TraceFilter 过滤器，响应 header 设置 traceId
-     */
-    @Bean
-    public FilterRegistrationBean<TraceFilter> traceFilter() {
-        FilterRegistrationBean<TraceFilter> registrationBean = new FilterRegistrationBean<>();
-        registrationBean.setFilter(new TraceFilter());
-        registrationBean.setOrder(WebFilterOrderEnum.TRACE_FILTER);
-        return registrationBean;
-    }
+    // TODO 芋艿：gateway 启动会报错，暂时注释掉
+//    /**
+//     * 创建 TraceFilter 过滤器，响应 header 设置 traceId
+//     */
+//    @Bean
+//    public FilterRegistrationBean<TraceFilter> traceFilter() {
+//        FilterRegistrationBean<TraceFilter> registrationBean = new FilterRegistrationBean<>();
+//        registrationBean.setFilter(new TraceFilter());
+//        registrationBean.setOrder(WebFilterOrderEnum.TRACE_FILTER);
+//        return registrationBean;
+//    }
 
 }
